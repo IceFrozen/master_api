@@ -1,0 +1,42 @@
+{
+  "name": "PlayerInfo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "wxOpenid":{"type":["string"]},
+    "wxNickname":{"type":"string"},
+    "wxHeadimgurl":{"type":"string"},
+    "wxUnionid":{"type":"string","index":true},
+    "wxAccessToken":{"type":"string","required":true},
+    "wxRefreshToken":{"type":"string","required":true}
+  },
+  "validations": [],
+  "relations": {
+    "seller":{
+      "type":"belongsTo",
+      "model":"SellerInfo"
+    },
+    "orders":{
+      "type":"hasMany",
+      "model":"Order",
+      "foreignKey":"userId",
+      "primaryKey": "wxUnionid"
+    },
+    "user":{
+      "type":"belongsTo",
+      "model":"user",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified","wxAccessToken","wxRefreshToken"],
+  "mixins" : {
+    "AddCreatedTime":{}
+  }
+}

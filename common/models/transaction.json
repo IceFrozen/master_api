@@ -1,0 +1,44 @@
+{
+  "name": "Transaction",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":true
+  },
+  "properties": {
+    "transactionType":{
+      "type":"string",
+      "required":true
+    },
+    "coin":{
+      "type":"number",
+      "required":true,
+      "default":0
+    },
+    "state":{
+      "type":"string",
+      "required":true,
+      "default":"initial"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "source":{
+      "type":"belongsTo",
+      "model":"user"
+    },
+    "destination":{
+      "type":"belongsTo",
+      "model":"user"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified"],
+  "mixins" : {
+    "ValidateBelongsTo":{},
+    "AddCreatedTime":{}
+  }
+}

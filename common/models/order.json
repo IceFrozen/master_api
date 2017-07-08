@@ -1,0 +1,86 @@
+{
+  "name": "Order",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":true
+  },
+  "properties": {
+    "status": {
+      "type": "number",
+      "required": true,
+      "description": "订单状态:0创建等待支付;1支付成功;-1支付取消",
+      "default": 0
+    },
+    "createTime": {
+      "type": "date",
+      "required": true,
+      "description": "创建时间",
+      "default": "$now"
+    },
+    "payTime": {
+      "type": "date",
+      "required": true,
+      "description": "订单结束时间"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "amount": {
+      "type": "number",
+      "required": true
+    },
+    "param":{
+      "type":"string"
+    },
+    "goodsId":{
+      "type":"string"
+    },
+    "url":{
+      "type":"string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "playerInfo":{
+      "type":"belongsTo",
+      "model":"PlayerInfo",
+      "foreignKey":"userId",
+      "primaryKey": "wxUnionid"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property":["create"]
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "seller",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified"],
+  "mixins" : {
+     "ValidateBelongsTo":{},
+     "AddCreatedTime":{}
+  }
+}

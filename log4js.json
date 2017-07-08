@@ -1,0 +1,18 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "./logs/loopback.log",
+      "layout": {
+        "type": "basic"
+      }
+    },
+    {
+      "type": "console"
+    }
+  ],
+
+  "levels": {},
+  "replaceConsole": true,
+  "lineDebug": true
+}

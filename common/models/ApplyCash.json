@@ -1,0 +1,65 @@
+{
+  "name": "ApplyCash",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":true
+  },
+  "properties": {
+    "status": {
+      "type": "number",
+      "required": true,
+      "description": "订单状态:-3:提现本地错误，需要回滚，0、等待审核;   1、审核通过;   -1、审核不通过, -2 订单异常（转账）、  2、已经到账",
+      "default": 0
+    },
+    "createTime": {
+      "type": "date",
+      "required": true,
+      "description": "创建时间",
+      "default": "$now"
+    },
+    "endTime": {
+      "type": "date",
+      "required": true,
+      "description": "批准时间",
+      "default": 0
+    },
+    "cash": {
+      "type": "number",
+      "required": true,
+      "description": "提现金额"
+    },
+    "params":{
+      "type": "string",
+      "description": "第三方返回"
+    },
+    "detailIds":{
+      "type":"[string]",
+      "description":"提现所包括的订单"
+    },
+    "detail":{
+      "type":"string",
+      "description":"审核备注"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "seller":{
+      "type":"belongsTo",
+      "model":"SellerInfo"
+    },
+    "RebateDetail":{
+      "type":"hasMany",
+      "model":"RebateDetail",
+      "foreignKey":"ApplyCashId"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified","params"],
+  "mixins" : {
+    "AddCreatedTime":{}
+  }
+}

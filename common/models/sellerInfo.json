@@ -1,0 +1,76 @@
+
+{
+  "name": "SellerInfo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":false
+  },
+  "properties": {
+    "level":{
+        "type": "number",
+        "required": true,
+        "description": "管理员层级",
+        "default": -1
+    }
+  },
+  "validations": [],
+  "relations": {
+    "uplevel":{
+      "type":"belongsTo",
+      "model":"SellerInfo"
+    },
+    "links":{
+      "type":"hasMany",
+      "model":"Link",
+      "foreignKey":"sellerId"
+    },
+    "wxInfo":{
+      "type":"belongsTo",
+      "model":"PlayerInfo",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    },
+    "downlevels":{
+      "type":"hasMany",
+      "model":"SellerInfo",
+      "foreignKey":"uplevelId"
+    },
+    "user":{
+      "type":"belongsTo",
+      "model":"user",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    },
+    "players":{
+      "type":"hasMany",
+      "model":"PlayerInfo",
+      "foreignKey":"sellerId"
+    },
+    "ApplyCashInfo":{
+      "type":"hasMany",
+      "model": "ApplyCash",
+      "foreignKey":"sellerId"
+    },
+    "RebateDetail":{
+      "type":"hasMany",
+      "model": "RebateDetail",
+      "foreignKey":"sellerId"
+    }
+  },
+  "acls": [
+    {
+      "accessType":"READ",
+      "permission":"ALLOW",
+      "principalType":"ROLE",
+      "principalId":"$owner"
+    }
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified"],
+  "mixins" : {
+    "ValidateBelongsTo":{},
+    "AddCreatedTime":{}
+  }
+}

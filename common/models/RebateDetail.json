@@ -1,0 +1,58 @@
+{
+  "name": "RebateDetail",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":true
+  },
+  "properties": {
+    "createTime": {
+      "type": "date",
+      "required": true,
+      "description": "返现时间",
+      "default": "$now"
+    },
+    "status": {
+      "type": "number",
+      "required": true,
+      "description": "0 已经申请提现，2 没有申请提现",
+      "default": 0
+    },
+    "cash": {
+      "type": "number",
+      "required": true,
+      "description": "返点金额"
+    },
+    "level":{
+      "type": "number",
+      "description": "0"
+    },
+    "detail":{
+      "type":"string",
+      "description":"审核备注"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "order":{
+      "type":"belongsTo",
+      "model":"Order"
+    },
+    "seller":{
+      "type":"belongsTo",
+      "model":"SellerInfo"
+    },
+    "ApplyCash": {
+      "type":"belongsTo",
+      "model":"ApplyCash"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified","params"],
+  "mixins" : {
+    "AddCreatedTime":{}
+  }
+}

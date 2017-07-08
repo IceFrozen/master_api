@@ -1,0 +1,92 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":false
+  },
+  "properties": {
+    "coin":{
+      "type":"Number",
+      "required":true,
+      "default":0
+    },
+    "pendingTransactions":{
+      "type":["string"],
+      "default":[]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccessToken",
+      "foreignKey": "userId",
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "roles":{
+      "type":"hasMany",
+      "model": "Role",
+      "foreignKey":"principalId",
+      "through": "RoleMapping"
+    },
+    "sellerInfo":{
+      "type":"hasOne",
+      "model": "SellerInfo",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    },
+    "wxInfo":{
+      "type":"hasOne",
+      "model": "PlayerInfo",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    },
+    "adminInfo":{
+      "type":"hasOne",
+      "model": "AdminInfo",
+      "foreignKey":"id",
+      "primaryKey":"id"
+    }
+  },
+  "acls": [
+    {
+      "accessType":"EXECUTE",
+      "permission":"ALLOW",
+      "principalType":"ROLE",
+      "principalId":"$everyone",
+      "property":["loginWithWechat","createWithWechat"]
+    },
+    {
+      "permission":"ALLOW",
+      "principalType":"ROLE",
+      "principalId":"$owner",
+      "property":[
+        "__get__sellerInfo",
+        "__get__sellerInfo__uplevel",
+        "__get__sellerInfo__downlevels",
+        "__get__sellerInfo__links",
+        "__get__sellerInfo__players",
+        "__create__sellerInfo__links",
+        "__get__adminInfo",
+        "__transferCoinToSeller__sellerInfo"
+      ]
+    },
+    {
+      "permission":"ALLOW",
+      "principalType":"ROLE",
+      "principalId":"admin",
+      "accessType":"*",
+      "property":"*"
+    }
+  ],
+  "hidden": ["__created","__modified"],
+  "methods": {},
+  "mixins" : {
+    "AddCreatedTime":{}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "mem": {
+    "name": "mem",
+    "connector": "memory"
+  },
+  "mongo": {
+    "host": "192.168.2.101",
+    "port": 27018,
+    "url": "mongodb://192.168.2.101/mahjong_master",
+    "database": "mahjong_master",
+    "password": "",
+    "name": "mongo",
+    "user": "",
+    "connector": "mongodb",
+    "allowExtendedOperators":true
+  }
+}

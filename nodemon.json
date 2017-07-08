@@ -1,0 +1,7 @@
+{
+  "env":{
+    "NODE_ENV": "development",
+    "DEBUG": "loopback:security:*,strong-error-handler"
+  },
+  "execMap": { "js": "node --harmony" }
+}

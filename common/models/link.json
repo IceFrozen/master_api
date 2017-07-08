@@ -1,0 +1,29 @@
+{
+  "name": "Link",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "type":{
+      "required":true,
+      "type":"string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "seller":{
+      "type":"belongsTo",
+      "model":"SellerInfo"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {},
+  "hidden": ["__created","__modified"],
+  "mixins" : {
+    "ValidateBelongsTo":{},
+    "AddCreatedTime":{}
+  }
+}
