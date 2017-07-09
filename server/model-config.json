@@ -69,5 +69,13 @@
   },
   "RebateDetail":{
     "dataSource":"mongo"
+  },
+  "Ask": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Question": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

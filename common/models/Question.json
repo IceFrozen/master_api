@@ -1,0 +1,55 @@
+{
+  "name": "Question",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "forceId":false,
+    "injectOptionsFromRemoteContext":true
+  },
+  "properties": {
+    "status": {
+      "type": "number",
+      "required": true,
+      "description": "问卷状态 0 未发布 1发布 2已过期",
+      "default": 0
+    },
+     "upTime": {
+      "type": "number",
+      "required": true,
+      "description": "答题次数",
+      "default": 0
+    },
+    "createTime": {
+      "type": "date",
+      "required": true,
+      "description": "创建时间",
+      "default": "$now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user":{
+      "type":"belongsTo",
+      "model":"user"
+    },
+    "wxInfo":{
+      "type":"hasOne",
+      "model": "PlayerInfo",
+      "foreignKey":"userId",
+      "primaryKey":"id"
+    }
+  },
+  "acls": [
+  ],
+  "methods": {
+    "createQuestion":{
+      "accepts":[
+          {"arg":"params","type":"object","required":true},
+          {"arg": "options", "type": "object", "http": "optionsFromRequest"}
+        ],
+      "returns":{"arg": "ret", "type": "object", "root": true}
+    }
+  },
+  "mixins" : {}
+}

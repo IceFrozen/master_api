@@ -37,18 +37,19 @@ module.exports = function(User) {
   })
   User.loginWithWechat = async function (wxCode) {
     let models = User.app.models
-    let playerInfo = await models.PlayerInfo.getFromWxCode(wxCode,false)
-    if(!playerInfo){
-      throw new Error("用户身份尚未注册")
-    }
+    let playerInfo = await models.PlayerInfo.getFromWxCode(wxCode,true)
     let userInfo = await User.findOrCreate({where:{id:playerInfo.id}},{
       id:playerInfo.id,
       username:playerInfo.wxUnionid,
       password:"RANDOM_PASSORD_"+Math.random()
     })
-
+    let superSeller = await models.SellerInfo.findOne({where:{level:-1}})
+    if(!superSeller) {
+      throw new Error("can't  find SuperSeller!")
+    }
+    playerInfo.sellerId = superSeller.id
+    await playerInfo.save()
     await userInfo[0].save()
-
     let accessToken = await userInfo[0].createAccessToken()
     return accessToken;
   }

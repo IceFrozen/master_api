@@ -73,6 +73,7 @@
         "__get__sellerInfo__players",
         "__create__sellerInfo__links",
         "__get__adminInfo",
+        "__get__wxInfo",
         "__transferCoinToSeller__sellerInfo"
       ]
     },
