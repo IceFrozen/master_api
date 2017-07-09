@@ -14,55 +14,55 @@ module.exports = function(Order) {
   })
 
    Order.observe("after save",async function(ctx){
-    let app = Order.app
-    if(!ctx.isNewInstance) return
-    let param = {
-      merNo: "sqh@sundagame.com",
-      ordercode: ctx.instance.id.toString(),
-      goodsId: ctx.instance.goodsId,
-      amount: ctx.instance.amount.toFixed(2),
-      statedate: moment().format("YYYYMMDD"),
-      callbackurl: "http://wx.mahjong.haowan98.com/api/sufupay_callback",
-      callbackMemo: "01"
-    }
-    ctx.instance.param = JSON.stringify(param);
-    //TODO  for test
+    // let app = Order.app
+    // if(!ctx.isNewInstance) return
+    // let param = {
+    //   merNo: "sqh@sundagame.com",
+    //   ordercode: ctx.instance.id.toString(),
+    //   goodsId: ctx.instance.goodsId,
+    //   amount: ctx.instance.amount.toFixed(2),
+    //   statedate: moment().format("YYYYMMDD"),
+    //   callbackurl: "http://wx.mahjong.haowan98.com/api/sufupay_callback",
+    //   callbackMemo: "01"
+    // }
+    // ctx.instance.param = JSON.stringify(param);
+    // //TODO  for test
+    // // await ctx.instance.save();
+    // // await ctx.instance.complete();
+    // // return
+    // let desStr = encode(ctx.instance.param);
+    // let desres = await axios.post('http://pay.qianhaisufu.com:3280/initOrder?merNo='+param.merNo,desStr)
+    // if(desres.data.result && desres.data.result !==200){
+    //   console.log(desres.data)
+    //   throw new Error(desres.data.resultmsg)
+    // }
+    // let res = decode(desres.data);
+    // ctx.instance.url = JSON.parse(res).codeUrl;
     // await ctx.instance.save();
-    // await ctx.instance.complete();
-    // return
-    let desStr = encode(ctx.instance.param);
-    let desres = await axios.post('http://pay.qianhaisufu.com:3280/initOrder?merNo='+param.merNo,desStr)
-    if(desres.data.result && desres.data.result !==200){
-      console.log(desres.data)
-      throw new Error(desres.data.resultmsg)
-    }
-    let res = decode(desres.data);
-    ctx.instance.url = JSON.parse(res).codeUrl;
-    await ctx.instance.save();
    })
 
   Order.prototype.complete = async function(){
-    this.status = 1;
-    this.payTime = new Date();
-    await this.save()
-    let coinMap = {
-       "10":10,
-       "20":25,
-       "50":70,
-       "100":200
-     }
-    await Order.app.mahjong.games.renqiu.recharge(this.userId,coinMap[this.amount.toFixed(0)])
-    let playerInfo = await Order.app.models.PlayerInfo.findOne({where:{wxUnionid:this.userId}})
-    if(!playerInfo) {
-      return
-    }
-    let seller = await Promise.promisify(playerInfo.seller).call(playerInfo)
-    if(seller){
-      let ret = []
-      await findUpLevelSeller(Order.app.models,this.id,seller,this.amount,1,ret)
-      await saveRebateDetail(Order.app.models,this,ret)
-    }
-   }
+   //  this.status = 1;
+   //  this.payTime = new Date();
+   //  await this.save()
+   //  let coinMap = {
+   //     "10":10,
+   //     "20":25,
+   //     "50":70,
+   //     "100":200
+   //   }
+   //  await Order.app.mahjong.games.renqiu.recharge(this.userId,coinMap[this.amount.toFixed(0)])
+   //  let playerInfo = await Order.app.models.PlayerInfo.findOne({where:{wxUnionid:this.userId}})
+   //  if(!playerInfo) {
+   //    return
+   //  }
+   //  let seller = await Promise.promisify(playerInfo.seller).call(playerInfo)
+   //  if(seller){
+   //    let ret = []
+   //    await findUpLevelSeller(Order.app.models,this.id,seller,this.amount,1,ret)
+   //    await saveRebateDetail(Order.app.models,this,ret)
+   //  }
+   // }
 };
 
 async function findUpLevelSeller (Models,orderId,seller,amount,uplevelCount,ret) {

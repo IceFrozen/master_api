@@ -13,6 +13,20 @@
       "required":true,
       "default":0
     },
+    "name":{
+      "type":"string",
+      "required":true,
+      "default":"未设置",
+      "description": "姓名"
+    },
+    "age":{
+      "type":"number",
+      "description": "年龄"
+    },
+    "phoneNumbr":{
+      "type":"string",
+      "description": "电话号码"
+    },
     "pendingTransactions":{
       "type":["string"],
       "default":[]
