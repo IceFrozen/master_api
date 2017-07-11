@@ -39,7 +39,8 @@ module.exports = function(Order) {
     // let res = decode(desres.data);
     // ctx.instance.url = JSON.parse(res).codeUrl;
     // await ctx.instance.save();
-   })
+    }
+   )
 
   Order.prototype.complete = async function(){
    //  this.status = 1;
@@ -62,7 +63,7 @@ module.exports = function(Order) {
    //    await findUpLevelSeller(Order.app.models,this.id,seller,this.amount,1,ret)
    //    await saveRebateDetail(Order.app.models,this,ret)
    //  }
-   // }
+    }
 };
 
 async function findUpLevelSeller (Models,orderId,seller,amount,uplevelCount,ret) {
