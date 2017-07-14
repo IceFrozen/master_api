@@ -62,6 +62,28 @@ module.exports = function(User) {
       arg: 'accessToken', type: 'object', root: true
     }
   })
+  //修改人物信息
+  User.prototype.updateInfo = async function(userinfo){
+    console.log(userinfo)
+    this.name = userinfo.name,
+    this.phoneNumber = userinfo.phoneNumber,
+    this.birthday = userinfo.birthday,
+    this.addressValue = userinfo.addressValue,
+    this.sex = userinfo.sex
+    this.email = userinfo.email||""
+    this.isSetOk = 1
+    return await this.save();
+  }
+  User.remoteMethod('prototype.updateInfo',{
+    accepts:[
+      {arg:'userinfo',type:'object',required:"true"},
+    ],
+    http:{path:'/updateInfo'},
+    returns:{
+      arg: 'userinfo', type: 'object', root: true
+    }
+  })
+
   User.beginTransfer = async function(userId,t){
     let Transaction = User.app.models.Transaction
     let coin = 0;

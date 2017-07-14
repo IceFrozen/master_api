@@ -8,10 +8,10 @@
     "forceId":false
   },
   "properties": {
-    "coin":{
+    "sex":{
       "type":"Number",
       "required":true,
-      "default":0
+      "default":1
     },
     "name":{
       "type":"string",
@@ -19,13 +19,24 @@
       "default":"未设置",
       "description": "姓名"
     },
-    "age":{
-      "type":"number",
-      "description": "年龄"
-    },
     "phoneNumbr":{
       "type":"string",
       "description": "电话号码"
+    },
+    "birthday":{
+      "type":"number",
+      "description": "出生年月",
+      "default":0
+    },
+    "isSetOk":{
+      "type":"number",
+      "required":true,
+      "default":0,
+      "description": "是否设置了个人信息"
+    },
+    "addressValue":{
+      "type":["string"],
+      "default":[]
     },
     "pendingTransactions":{
       "type":["string"],
@@ -88,6 +99,7 @@
         "__create__sellerInfo__links",
         "__get__adminInfo",
         "__get__wxInfo",
+        "updateInfo",
         "__transferCoinToSeller__sellerInfo"
       ]
     },
