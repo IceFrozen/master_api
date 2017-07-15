@@ -49,6 +49,19 @@
           {"arg": "options", "type": "object", "http": "optionsFromRequest"}
         ],
       "returns":{"arg": "ret", "type": "object", "root": true}
+    },
+    "getQuestion":{
+      "accepts":[
+          {"arg": "options", "type": "object", "http": "optionsFromRequest"}
+        ],
+      "returns":{"arg": "ret", "type": "object", "root": true}
+    },
+    "subQuestion":{
+      "accepts":[
+          {"arg":"askInfo","type":"object","required":true},
+          {"arg": "options", "type": "object", "http": "optionsFromRequest"}
+        ],
+      "returns":{"arg": "ret", "type": "object", "root": true}
     }
   },
   "mixins" : {}

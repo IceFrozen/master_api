@@ -7,13 +7,29 @@
     "forceId":false
   },
   "properties": {
+    "total":{
+      "required":true,
+      "type":"number",
+      "default":0
+    },
+    "time":{
+      "required":true,
+      "type":"number",
+      "default":0
+    }
   },
   "validations": [],
   "relations": {
     "user":{
       "type":"belongsTo",
       "model":"user",
-      "foreignKey":"id",
+      "foreignKey":"userId",
+      "primaryKey":"id"
+    },
+    "question": {
+      "type":"belongsTo",
+      "model":"Question",
+      "foreignKey":"questionId",
       "primaryKey":"id"
     }
   },
