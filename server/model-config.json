@@ -37,7 +37,6 @@
     "dataSource": "mongo",
     "public": false
   },
-
   "user": {
     "dataSource": "mongo",
     "public": true
@@ -75,6 +74,10 @@
     "public": true
   },
   "Question": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Mark": {
     "dataSource": "mongo",
     "public": true
   }

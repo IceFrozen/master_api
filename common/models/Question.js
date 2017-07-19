@@ -53,7 +53,6 @@ module.exports = function(Question) {
       throw new Error("login first")
     }
     let question = await Question.findOne()
-    console.log(question)
     if(!question) {
       return { isSucc:-1,msg:"失败",Ask: null}
     }

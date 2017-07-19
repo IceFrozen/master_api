@@ -12,11 +12,13 @@ module.exports = function(app,callback){
 }
 // upsert 'sundaAdmin' user
 async function initDefaultAdmin(app){
-  var playerInfo = await app.models.PlayerInfo.getFromOpenid('oL-YqwfEedCFWkQNOikSSIX8zNqc',true)
+  // // 我的微信是超级管理员
+  var playerInfo = await app.models.PlayerInfo.getFromOpenid('oL-YqwXR20jCAszl3jHCsYPVZ0mQ',true)
   var user = await app.models.user.upsertWithWhere({id:playerInfo.id},{
       id:playerInfo.id,
       username:"testAdmin",
-      password:"testAdmin"
+      password:"testAdmin",
+      name:"超级管理员"
   })
   var role = await app.models.Role.findOne({where:{name:'admin'}})
   var count = await role.principals.count({principalId:playerInfo.id})

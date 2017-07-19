@@ -1,12 +1,35 @@
 {
-  "name": "Ask",
+  "name": "Mark",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true,
     "forceId":false
   },
-  "properties": {},
+  "properties": {
+    "dateTime":{
+      "required":true,
+      "type":"string"
+    },
+    "entryTime": {
+      "type": "date",
+      "required": true,
+      "description": "填写时间",
+      "default": "$now"
+    },
+    "mark":{
+      "lession1":["string"],
+      "lession2":["string"],
+      "lession3":["string"],
+      "askInput":["object"]
+    },
+    "know":{
+      "lession1":["string"],
+      "lession2":["string"],
+      "lession3":["string"],
+      "askInput":["object"]
+    }
+  },
   "validations": [],
   "relations": {
     "user":{
@@ -21,6 +44,7 @@
   "methods": {
      "getCheckInfo":{
       "accepts":[
+          {"arg":"type","type":"string","required":true},
           {"arg": "options", "type": "object", "http": "optionsFromRequest"}
         ],
       "returns":{"arg": "ret", "type": "object", "root": true}
