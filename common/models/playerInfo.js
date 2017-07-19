@@ -40,6 +40,22 @@ module.exports = function(Player)
     return playerInfo;
   }
 
+  Player.getAdminInfo = async function(unionid){
+    let playerInfo = await Player.findOne({where:{wxUnionid:unionid}})
+    if(!playerInfo){
+      playerInfo = await Player.create({
+        wxOpenid:["wxUserInfo.openid"],
+        wxHeadimgurl:"wxUserInfo.headimgurl",
+        wxNickname:"admin",
+        wxUnionid:unionid,
+        sex:1,
+        wxAccessToken:"__",
+        wxRefreshToken:"__"
+      })
+    }
+    return playerInfo
+  }
+  
   Player.getFromOpenid = async function(openid,isAutoCreate){
     let wxUserInfo = await co(Player.app.wxapi.getUser(openid))
     let playerInfo = await Player.findOne({where:{wxUnionid:wxUserInfo.unionid}})

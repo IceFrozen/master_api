@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+ * --------------------------------------------------------------------
+ * 样式名称： "首页样式" position:absolute; background:#6C3;top:100px; left:50%; margin:10px 0 0 10px; z-index:1
+ * 容器所属： "全局（ALL）"
+ * 容器功能: 设置页面各元素最基本样式，包括body，html，form，ul,li,p,dl,dd,dt,h,th等等
+ * 包含容器： "全局（ALL）" 
+----------------------------------------------------------
+ */
+body{margin: 0;	padding: 0;	font-size: 12px;COLOR: #ffffff; font-family:"微软雅黑";}
+html, body { overflow-x:hidden;}
+html{ background:#000;}
+form,ul,li,p,dl,dd,dt,h,th,h2{margin: 0;padding: 0;font-size: 12px;}
+li,ul{list-style: none;}
+img{ border: 0px; }
+a {blr:expression(this.onFocus=this.blur());outline:none;}
+a:link {text-decoration: none;color: #DBDEDD;}
+a:visited {text-decoration: none;color: #DBDEDD;}
+a:hover {text-decoration:none;color: #ff0000;}
+a:active {text-decoration: none;color: #DBDEDD;}
+div,span,ul,li{ overflow:hidden; }
+
+
+/*
+ * --------------------------------------------------------------------
+ * 样式名称： "首页样式"
+ * 容器所属： "全局（ALL）"
+ * 容器功能: 设置页面各元素最基本样式，包括body，html，form，ul,li,p,dl,dd,dt,h,th等等
+ * 包含容器： "全局（ALL）"
+----------------------------------------------------------
+ */
+#warp{ width:640px; height:1136px; margin:0 auto; background:url(bg.jpg) no-repeat; zoom:1;}
+#warp ul{ width:640px; height:1136px; margin:0 auto; background:url(bg.jpg) no-repeat;}
+#warp ul li.btn{ width:512px; height:119px; line-height:90px; text-align:center; font-size:48px; background:url(btn.png) no-repeat; margin:890px 0 0 64px;}
+#warp ul li.btn a{ width:100%; height:100%; display:block;}
