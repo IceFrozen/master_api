@@ -35,11 +35,15 @@ module.exports = function(User) {
       arg: 'errcode', type: 'number', root: true
     }
   })
-  User.loginWithWechat = async function (wxCode) {
+  User.loginWithWechat = async function (wxCode, options) {
     let models = User.app.models
     console.log(wxCode,"wxCode")
     let playerInfo = await models.PlayerInfo.getFromWxCode(wxCode,true)
     console.log(wxCode,"222")
+    if(options.accessToken) {
+      return options.accessToken
+    }
+
     let userInfo = await User.findOrCreate({where:{id:playerInfo.id}},{
       id:playerInfo.id,
       username:playerInfo.wxUnionid,
@@ -57,7 +61,8 @@ module.exports = function(User) {
   }
   User.remoteMethod('loginWithWechat',{
     accepts:[
-      {arg:'wxCode',type:'string'}
+      {arg:'wxCode',type:'string'},
+      {"arg": "options", "type": "object", "http": "optionsFromRequest"}
     ],
     http:{path:'/loginWithWechat'},
     returns:{
