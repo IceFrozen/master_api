@@ -15,13 +15,12 @@ async function initDefaultAdmin(app){
   // // 我的微信是超级管理员
   // return 
   // var playerInfo = await app.models.PlayerInfo.getFromOpenid('osGVmwH_MrPwWlZ1zj2-ShvXbJIw',true)
-  var playerInfo = await app.models.PlayerInfo.getAdminInfo('071c0K4A0oNfei11Bh7A0yhN4A0c0K4t')
-  console.log(playerInfo)
+  var playerInfo = await app.models.PlayerInfo.getAdminInfo('071c0K4A0oNfei11Bh7A0yhN4A0c0K4t___')
+  // console.log(playerInfo)
   var user = await app.models.user.upsertWithWhere({id:playerInfo.id},{
       id:playerInfo.id,
       username:"testAdmin",
-      password:"testAdmin",
-      name:"超级管理员"
+      password:"testAdmin"
   })
   var role = await app.models.Role.findOne({where:{name:'admin'}})
   var count = await role.principals.count({principalId:playerInfo.id})
