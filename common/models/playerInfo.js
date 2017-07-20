@@ -19,6 +19,7 @@ module.exports = function(Player)
         wxHeadimgurl:wxUserInfo.headimgurl,
         wxNickname:wxUserInfo.nickname,
         wxUnionid:wxUserInfo.unionid,
+        sex:wxUserInfo.sex,
         wxAccessToken:wxAccessToken.access_token,
         wxRefreshToken:wxAccessToken.refresh_token
       })
@@ -31,6 +32,7 @@ module.exports = function(Player)
       playerInfo.wxHeadimgurl=wxUserInfo.headimgurl;
       playerInfo.wxNickname=wxUserInfo.nickname;
       playerInfo.wxUnionid=wxUserInfo.unionid;
+      sex = wxUserInfo.sex
       playerInfo.wxAccessToken = wxAccessToken.access_token;
       playerInfo.wxRefreshToken = wxAccessToken.refresh_token;
       await playerInfo.save();

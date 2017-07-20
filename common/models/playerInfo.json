@@ -9,6 +9,7 @@
     "wxOpenid":{"type":["string"]},
     "wxNickname":{"type":"string"},
     "wxHeadimgurl":{"type":"string"},
+    "sex":{"type":"number"},
     "wxUnionid":{"type":"string","index":true},
     "wxAccessToken":{"type":"string","required":true},
     "wxRefreshToken":{"type":"string","required":true}
