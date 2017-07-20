@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "wxOpenid":{"type":["string"]},
+    "wxOpenid":{"type":"string"},
     "wxNickname":{"type":"string"},
     "wxHeadimgurl":{"type":"string"},
     "wxUnionid":{"type":"string","index":true},
