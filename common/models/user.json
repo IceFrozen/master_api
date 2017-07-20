@@ -119,7 +119,7 @@
           {"arg": "options", "type": "object", "http": "optionsFromRequest"}
         ],
       "returns":{"arg": "accessToken", "type": "object", "root": true}
-    },
+    }
   },
   "mixins" : {
     "AddCreatedTime":{}
