@@ -1,6 +1,6 @@
 module.exports = {
-	appId:"wxe6aca4dd8bfab4a9",
-	appSec:"2999ae35eee064298baa81b5f21ef748"
+	appId:"wxe475d3fe30b0ff1b",
+	appSec:"7ed710eea2c60ce246a0a95ea4e2d5ea"
 }
 
 /*
