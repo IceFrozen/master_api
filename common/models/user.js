@@ -38,12 +38,13 @@ module.exports = function(User) {
   User.loginWithWechat = async function (wxCode, options) {
     let models = User.app.models
     console.log(wxCode,"wxCode")
-    let playerInfo = await models.PlayerInfo.getFromWxCode(wxCode,true)
-    console.log(wxCode,"222")
+    console.log(options,"options")
     if(options.accessToken) {
       return options.accessToken
     }
-
+    let playerInfo = await models.PlayerInfo.getFromWxCode(wxCode,true)
+    console.log(wxCode,"222")
+   
     let userInfo = await User.findOrCreate({where:{id:playerInfo.id}},{
       id:playerInfo.id,
       username:playerInfo.wxUnionid,
