@@ -112,15 +112,7 @@
     }
   ],
   "hidden": ["__created","__modified"],
-  "methods": {
-    "loginWithWechat":{
-        "accepts":[
-            {"arg":"wxCode","type":"string"},
-            {"arg": "options", "type": "object", "http": "optionsFromRequest"}
-          ],
-      "returns":{"arg": "accessToken", "type": "object", "root": true}
-    }
-  },
+  "methods": {},
   "mixins" : {
     "AddCreatedTime":{}
   }

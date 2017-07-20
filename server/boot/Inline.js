@@ -4,5 +4,9 @@
 	增加内建方法
 */
 module.exports = function(app) {
-  app.mahjong = require("../../lib/mahjong")
+  app.cashed = {}
+
+  app.timeCashClear = setInterval(function(){
+  	app.cashed = {}
+  },100000)
 };
