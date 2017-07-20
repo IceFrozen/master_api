@@ -9,6 +9,9 @@ module.exports = function(app) {
   app.get('/api/wxH5Config',function(req,res,next){
     let url = req.query.url;
     console.log(url)
+    console.log(url)
+    console.log(url)
+    console.log(url)
     co(function*(){
       var data = yield app.wxapi.getJsConfig({
         debug:false,
