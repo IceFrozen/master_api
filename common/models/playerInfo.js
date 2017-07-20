@@ -32,7 +32,7 @@ module.exports = function(Player)
       playerInfo.wxHeadimgurl=wxUserInfo.headimgurl;
       playerInfo.wxNickname=wxUserInfo.nickname;
       playerInfo.wxUnionid=wxUserInfo.unionid;
-      sex = wxUserInfo.sex
+      playerInfo.sex = wxUserInfo.sex
       playerInfo.wxAccessToken = wxAccessToken.access_token;
       playerInfo.wxRefreshToken = wxAccessToken.refresh_token;
       await playerInfo.save();
