@@ -4,10 +4,10 @@
     "connector": "memory"
   },
   "mongo": {
-    "host": "192.168.2.101",
+    "host": "127.0.0.1",
     "port": 27018,
-    "url": "mongodb://192.168.2.101/mahjong_master",
-    "database": "mahjong_master",
+    "url": "mongodb://127.0.0.1/yihe_shuyuan",
+    "database": "yihe_shuyuan",
     "password": "",
     "name": "mongo",
     "user": "",
