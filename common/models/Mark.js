@@ -15,10 +15,6 @@ module.exports = function(Mark) {
       dateTime:dataString,
       userId:userId
     }
-    console.log(type)
-    console.log(type)
-    console.log(type)
-    console.log(type)
     let newRet = (await Mark.findOne({where:{dateTime:dataString,userId:userId,type:type}}))
     return newRet
   }

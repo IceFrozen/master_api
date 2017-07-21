@@ -137,7 +137,7 @@ function buildReturnBack (question) {
           }
           q.select.map(ss=>{
               let key = qItem.questioId + "_" + new mongodb.ObjectID()
-              let value = ss.selection + "(" + ss.score +"分)"
+              let value = ss.selection
               let index = ss.index
               let score = ss.score
               qItem.selects.push({key,value,index,score})
