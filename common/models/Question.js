@@ -4,8 +4,8 @@ const mongodb = require('mongodb');
 module.exports = function(Question) {
 	//创建问卷
 	Question.createQuestion = async function(params,options){
-		console.log("params",params)
-		console.log("params",options)
+		// console.log("params",params)
+		// console.log("params",options)
    	let models = Question.app.models
    	// 检查params 的参数
    	if(!options.accessToken) {
@@ -84,8 +84,19 @@ module.exports = function(Question) {
     delete askInfo.id
     askInfo.time = Date.now()
     askInfo.questionId = this.id
-    await Ask.create(askInfo)
-    return {isSucc:0,msg:"success"}
+    let askinfo = await Ask.create(askInfo)
+    
+    let total = askinfo.total
+    let scoures = []
+
+    askinfo.group.map(g => {
+        let total_groups = 0
+        g.questions.map( q => { 
+          total_groups += parseInt(g.questionSorce)
+        })
+        scoures.push(total_groups)
+    })
+    return {isSucc:0,msg:"success",total:total,scores:scoures}
   }
   Question.remoteMethod('prototype.subQuestion',{
     accepts:[
