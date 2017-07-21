@@ -92,7 +92,7 @@ module.exports = function(Question) {
     askinfo.group.map(g => {
         let total_groups = 0
         g.questions.map( q => { 
-          total_groups += parseInt(g.questionSorce)
+          total_groups += parseInt(q.questionSorce)
         })
         scoures.push(total_groups)
     })
