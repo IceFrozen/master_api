@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+<title>麻将官网网站</title>
+<link href="images/css.css" rel="stylesheet" type="text/css" />
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
+<script type="text/javascript" src="js/global.index.js"></script>
+<script src="//cdn.bootcss.com/jquery-url-parser/2.3.1/purl.min.js"></script>
+</head>
+
+<body>
+<div id="warp">
+<ul>
+  <li class="btn" id ="joinNow"><a href="javascript:void(0);"></a></li>
+</ul>
+</div>
+</body>
+</html>
+ <script>
+    $(function(){
+      $("#joinNow").click(function(){
+        var href = $.url(location.href)
+        var appid = 'wx805f60be1812cff6'
+        var redirectUri = encodeURIComponent('http://wx.mahjong.haowan98.com/static/inviteSellerSuccess.html')
+        var url = [
+          "https://open.weixin.qq.com/connect/oauth2/authorize?appid=",appid,
+          "&redirect_uri=",redirectUri,
+          "&response_type=code&scope=snsapi_userinfo",
+          "&state=",href.param("t"),"#wechat_redirect"];
+        location.href = url.join("")
+      })
+    })
+</script>
